@@ -6,6 +6,8 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 
+import static com.utest.reto.userinterface.Utestpage.*;
+
 public class GoToRegister implements Task {
 
     public static GoToRegister onThePage() {
@@ -14,6 +16,6 @@ public class GoToRegister implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-    actor.attemptsTo(Click.on(Utestpage.BTN_REGISTER));
+    actor.attemptsTo(Click.on(BTN_REGISTER));
     }
 }

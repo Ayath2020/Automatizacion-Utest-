@@ -15,30 +15,45 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import org.hamcrest.Matchers;
 
+import static com.utest.reto.questions.VerifyWelcome.*;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.actors.OnStage.*;
+import static org.hamcrest.core.IsEqual.equalTo;
+
 
 public class UtestStepDefinitions {
 
-
     @Before
     public void setStage() {
-        OnStage.setTheStage(new OnlineCast());
+        setTheStage(new OnlineCast());
     }
 
     @Given("^I want to register on Utest Web Page$")
 
     public void iWantToRegisterOnUtestWebPage() {
-        OnStage.theActorCalled("ayath").wasAbleTo(OpenUp.thePage(), GoToRegister.onThePage());
+        theActorCalled("ayath").wasAbleTo(OpenUp.thePage(), GoToRegister.onThePage());
     }
 
     @When("^I Put my dates to create my account$")
     public void iPutMyDatesToCreateMyAccount() {
-        OnStage.theActorInTheSpotlight().attemptsTo(Register.newUser());
+        theActorInTheSpotlight().attemptsTo(Register.newUser());
     }
 
-    @Then("^I validate the (.*) page for new users$")
-    public void iValidateTheWelcomePageForNewUsers(String question) {
-    String txtwelcome = "We are excited that you have found your way to uTest - home of the largest community of digital freelance software testers in the world! First, please check your email inbox to confirm your email address and complete your uTest registration.\n\nNext, we have gathered the following useful information to help you get started.";
-    OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(VerifyWelcome.verifyWelcome(), Matchers.equalTo(txtwelcome)));
+    @Then("^I validate the welcome page for new users$")
+    public void iValidateTheWelcomePageForNewUsers() {
+    theActorInTheSpotlight().should(seeThat("the welcome message", verifyWelcome(), equalTo("We are excited that you have found your way to uTest - home of the largest community of digital freelance software testers in the world! First, please check your email inbox to confirm your email address and complete your uTest registration.Next, we have gathered the following useful information to help you get started.")));
     }
+
+
+
+
+
+
+
+/*@Then("^I validate the welcome page for new users$")
+    public void iValidateTheWelcomePageForNewUsers() {
+String txtwelcome = "We are excited that you have found your way to uTest - home of the largest community of digital freelance software testers in the world! First, please check your email inbox to confirm your email address and complete your uTest registration.\n\nNext, we have gathered the following useful information to help you get started.";
+theActorInTheSpotlight().should(GivenWhenThen.seeThat(VerifyWelcome.verifyWelcome(), Matchers.equalTo(txtwelcome)));
+}*/
 
 }

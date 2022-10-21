@@ -17,7 +17,7 @@ public class UtestRegisterPage extends PageObject {
 
     public static final Target BTN_NEXT_DEVICES = Target.the("boton next devices").located(By.xpath("//a[contains(@ng-click,'validateAddressInfoStep(forms.userForm)')]"));
 
-    public static final Target BTN_LAST_STEP = Target.the("boton last steps").located(By.xpath("//a[contains(@ng-click,'validateDevices(userForm)')]"));
+    public static final Target BTN_LAST_STEP = Target.the("boton last steps").located(By.xpath("//*[span=\"Next: Last Step\"]"));
 
     public static final Target LBL_PASSWORD = Target.the("Label nombres").located(By.id("password"));
     public static final Target LBL_CONFIRM_PASSWORD = Target.the("Label nombres").located(By.id("confirmPassword"));
@@ -25,6 +25,6 @@ public class UtestRegisterPage extends PageObject {
     public static final Target CHK_BOX_ACEPT_TERMS = Target.the("check box aceptar terminos").located(By.xpath("//*[@ng-class='{error: userForm.termOfUse.$error.required}']"));
     public static final Target CHK_BOX_ACEPT_PRIVACY = Target.the("check box aceptar privacidad").located(By.xpath("//*[@ng-class='{error: userForm.privacySetting.$error.required}']"));
     public static final Target BTN_COMPLETE = Target.the("Label nombres").located(By.id("laddaBtn"));
-    public static final Target BTN_WELCOME = Target.the("Mensaje bienvenida").located(By.xpath("//p[@class='welcome-lead']"));
+    public static final Target TXT_WELCOME = Target.the("Mensaje bienvenida").located(By.xpath("//p[@class='welcome-lead']"));
 
 }
